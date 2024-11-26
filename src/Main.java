@@ -20,9 +20,9 @@ public class Main {
         char[] ch = num[0].toCharArray();
         for (int i = 0; i < ch.length; i++) {
             if (ch[i] >= '0' && ch[i] <= '9') {
-                finalvalue += Character.getNumericValue(ch[i]) * (Math.pow(baseval, i));
+                finalvalue += (int) (Character.getNumericValue(ch[i]) * (Math.pow(baseval, i)));
             } else if (ch[i] >= 'A' && ch[i] <= 'Z') {
-                finalvalue += CharValue(ch[i]) * Math.pow(baseval, i);
+                finalvalue += (int) (CharValue(ch[i]) * Math.pow(baseval, i));
             }
         }
         return finalvalue;
@@ -31,7 +31,6 @@ public class Main {
     public static boolean isValidNumber(String input) {
         //checks if given input is a number which fits its base
         int parsebase;
-        int parseval;
         if (!input.contains("b") || input.indexOf('b') != input.lastIndexOf('b')) // checks number of times the letter 'b' appears in the input
             return false;
         String[] num = input.split("b");
@@ -43,8 +42,8 @@ public class Main {
         String base = num[1];
         parsebase = BaseValue(base);
         char[] c = val.toCharArray();
-        for (int i = 0; i < c.length; i++) {
-            if (Character.digit(c[i], parsebase) == -1)
+        for (char value : c) {
+            if (Character.digit(value, parsebase) == -1)
                 return false;
         }
 
@@ -65,8 +64,8 @@ public class Main {
             }
         } else {
             char[] valarray = base.toCharArray();
-            for (int i = 0; i < valarray.length; i++) {
-                p += Character.getNumericValue(valarray[i]);
+            for (char value : valarray) {
+                p += Character.getNumericValue(value);
                 p *= 10;
             }
             p /= 10;
