@@ -11,6 +11,23 @@ public class Main {
         System.out.println(isValidNumber(s));
     }
 
+    public static int NumtoDecimalVal(String s) {
+        int finalvalue = 0;
+        if (!isValidNumber(s))
+            return 0;
+        String[] num = s.split("b");
+        int baseval = BaseValue(num[1]);
+        char[] ch = num[0].toCharArray();
+        for (int i = 0; i < ch.length; i++) {
+            if (ch[i] >= '0' && ch[i] <= '9') {
+                finalvalue += Character.getNumericValue(ch[i]) * (Math.pow(baseval, i));
+            } else if (ch[i] >= 'A' && ch[i] <= 'Z') {
+                finalvalue += CharValue(ch[i]) * Math.pow(baseval, i);
+            }
+        }
+        return finalvalue;
+    }
+
     public static boolean isValidNumber(String input) {
         //checks if given input is a number which fits its base
         int parsebase;
@@ -32,7 +49,7 @@ public class Main {
         }
 
         return true;
-      
+
     }
 
     public static int BaseValue(String base) {
