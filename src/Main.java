@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /*
@@ -22,7 +23,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter a string as number#1 (or \"quit\" to end the program)");
         input1 = sc.nextLine();
-        while (!input1.equals("quit")) {
+        while (!input1.equals("quit") && !input2.equals("quit")) {
             if (Ex1.isNumber(input1)) {
                 System.out.println("num1 =" + input1 + "is valid , value: " + Ex1.number2Int(input1));
             } if (!Ex1.isNumber(input1)) {
@@ -51,7 +52,7 @@ public class Main {
             input2 = ss[1];
             sum = ss[2];
             mult = ss[3];
-            System.out.println("Max Over [" + input1 + "," + input2 + "," + mult + "," + sum + "] " + Ex1.maxIndex(ss) );
+            System.out.println("Max Over" + Arrays.toString(ss) + Ex1.maxIndex(ss) );
             System.out.println("Enter a string as number#1 (or \"quit\" to end the program)");
             input1 = sc.nextLine();
         }

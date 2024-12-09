@@ -6,7 +6,7 @@ public class Ex1 {
             return Integer.parseInt(s);
         int ans = -1;
         if (!isNumber(s))
-            return 0;
+            return -1;
         String[] num = s.split("b");
         int baseval = BaseValue(s);
         char[] ch = num[0].toCharArray();
@@ -17,7 +17,7 @@ public class Ex1 {
                 ans += (int) (CharValue(ch[i]) * Math.pow(baseval, ch.length - 1 - i));
             }
         }
-        return ans;
+        return ans+1;
     }
 
     public static String int2Number(int num, int base) {
