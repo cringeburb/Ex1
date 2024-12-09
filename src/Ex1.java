@@ -1,26 +1,30 @@
 import java.util.ArrayList;
 
 public class Ex1 {
+    //converts a number to its decimal value
     public static int number2Int(String s) {
-        if(!s.contains("b") && isNumber(s))
-            return Integer.parseInt(s);
-        int ans = -1;
-        if (!isNumber(s))
+        if (!s.contains("b") && isNumber(s)) //checks if the number is already in its decimal value
+            return Integer.parseInt(s);//returns the number if its already in base 10 such as: 1 , 2 , 100 etc.
+        int ans = 0;
+        if (!isNumber(s))//validate the numbers format
             return -1;
-        String[] num = s.split("b");
-        int baseval = BaseValue(s);
-        char[] ch = num[0].toCharArray();
+        String[] num = s.split("b");//split the number to its value and base
+        int baseval = BaseValue(s);//save the value of the base
+        char[] ch = num[0].toCharArray();//convert int an array of characters inorder to check each char individually
         for (int i = 0; i < ch.length; i++) {
-            if (ch[i] >= '0' && ch[i] <= '9') {
+            if (ch[i] >= '0' && ch[i] <= '9') { //if character is a digit
                 ans += (int) (Character.getNumericValue(ch[i]) * (Math.pow(baseval, ch.length - 1 - i)));
-            } else if (ch[i] >= 'A' && ch[i] <= 'Z') {
+            } else if (ch[i] >= 'A' && ch[i] <= 'Z') { //if characters value is greater than 9
                 ans += (int) (CharValue(ch[i]) * Math.pow(baseval, ch.length - 1 - i));
             }
         }
-        return ans+1;
+        return ans ; //return final converted value
     }
 
+    //changes an Integer to its representation with a given base
     public static String int2Number(int num, int base) {
+        if (num == 0)
+            return "0b" + base; // Handle the case where num is 0
         String ans = "";
         ArrayList<Character> c = new ArrayList<Character>();
         int bit = 0;
@@ -28,38 +32,31 @@ public class Ex1 {
         while (num != 0) {
             bit = num % base;
             num = num / base;
-            if (bit == 10)
-                c.add('A');
-            if (bit == 11)
-                c.add('B');
-            if (bit == 12)
-                c.add('C');
-            if (bit == 13)
-                c.add('D');
-            if (bit == 14)
-                c.add('E');
-            if (bit == 15)
-                c.add('F');
-            else {
-                c.add((char) (bit + '0'));
+            if (bit >= 10) {
+                c.add((char) ('A' + (bit - 10)));
+                // Handle bases beyond 10
+            } else {
+                c.add((char) (bit + '0')); // Convert digit to character
             }
         }
+
         StringBuilder sb = new StringBuilder();
         for (int i = c.size() - 1; i >= 0; i--) {
-            sb.append(c.get(i));
+            sb.append(c.get(i)); //appends characters in reverse order
 
         }
-        sb.append('b');
-        sb.append(base);
-        ans = sb.toString();
+        sb.append('b');//appends base symbol
+        sb.append(base); // adds the base representation
+        ans = sb.toString(); //converts string builder to a string
         return ans;
     }
 
+    //checks if a given string is a valid number
     public static boolean isNumber(String input) {
         boolean ans = true;
-        if(!input.contains("b") ){
-            for(int i = 0; i<input.length(); i++){
-                if(input.charAt(i)>='a' && input.charAt(i)<='z' || input.charAt(i)>='A' && input.charAt(i)<='Z'){
+        if (!input.contains("b")) { //string might be a decimal number without a base representation
+            for (int i = 0; i < input.length(); i++) {
+                if (input.charAt(i) >= 'a' && input.charAt(i) <= 'z' || input.charAt(i) >= 'A' && input.charAt(i) <= 'Z') { //if all characters are digits
                     ans = false;
                 }
             }
@@ -69,14 +66,16 @@ public class Ex1 {
         //checks if given input is a number which fits its base
         int parsebase;
         if (!input.contains("b") || input.indexOf('b') != input.lastIndexOf('b')) // checks number of times the letter 'b' appears in the input
-            ans = false;
+            return false;
         String[] num = input.split("b");
         if (num.length != 2)
-            ans = false;
+            return false;
         if (BaseValue(input) == 0)
-            ans = false;
+            return false;
         String val = num[0];
         parsebase = BaseValue(input);
+        if (parsebase <= 0)
+            return false;
         char[] c = val.toCharArray();
         for (char value : c) {
             if (Character.digit(value, parsebase) == -1) // Base output for a false base to value ratio.
@@ -87,9 +86,10 @@ public class Ex1 {
 
     }
 
+    //retrieves the value of a given number
     public static int BaseValue(String num) {
-        if(!num.contains("b") && isNumber(num))
-            return 10;
+        if (!num.contains("b") && isNumber(num))
+            return 10; //base 10 can be written without a base representation
         String[] parts = num.split("b");
         String base = parts[1];
         int p = 0;
@@ -97,10 +97,10 @@ public class Ex1 {
         if (base.length() == 1) {
             c = base.charAt(0);
             if (Character.isDigit(c))
-                return Integer.parseInt(base);
+                return Integer.parseInt(base); //returns base value 1-9
 
             if (base.charAt(0) >= 'A' && base.charAt(0) <= 'Z') {
-                return CharValue(base.charAt(0));
+                return CharValue(base.charAt(0)); //returns base value 10-16
             }
         } else {
             char[] valarray = base.toCharArray();
@@ -131,17 +131,19 @@ public class Ex1 {
             return 16;
         return 0;
     }
-    public static int maxIndex(String[] s){
+
+    public static int maxIndex(String[] m) {
         int ans = Integer.MIN_VALUE;
-        for (int i = 0; i < s.length; i++){
-            if (ans < number2Int(s[i]))
-                ans = number2Int(s[i]);
+        for (int i = 0; i < m.length; i++) {
+            if (ans < number2Int(m[i]))
+                ans = number2Int(m[i]);
         }
         return ans;
     }
-    public static boolean equals (String a, String b) {
+
+    public static boolean equals(String a, String b) {
         boolean ans = true;
-        if(a.length() != b.length()){
+        if (a.length() != b.length()) {
             ans = false;
             return ans;
         }

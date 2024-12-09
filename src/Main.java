@@ -36,7 +36,7 @@ public class Main {
             if (Ex1.isNumber(input2)) {
                 System.out.println("num1 =" + input2 + "is valid , value: " + Ex1.number2Int(input2));
             } if(!Ex1.isNumber(input2)) {
-                System.out.println("num1 =" + input1 + "is not valid , value: -1");
+                System.out.println("num1 =" + input2 + "is not valid , value: -1");
                 System.out.println("ERR: num1 is in the wrong format" + "(" + input2 + ")");
                 break;
             }
@@ -48,11 +48,11 @@ public class Main {
             System.out.println(input1 + " + " + input2 + " = " + sum );
             System.out.println(input1 + " * " + input2 + " = " + mult);
             String [] ss = new String[4];
-            input1= ss[0];
-            input2 = ss[1];
-            sum = ss[2];
-            mult = ss[3];
-            System.out.println("Max Over" + Arrays.toString(ss) + Ex1.maxIndex(ss) );
+           ss[0] = input1;
+           ss[1] = input2;
+           ss[2] = sum;
+           ss[3] = mult;
+            System.out.println("Max Over"  + Ex1.maxIndex(ss) );
             System.out.println("Enter a string as number#1 (or \"quit\" to end the program)");
             input1 = sc.nextLine();
         }
