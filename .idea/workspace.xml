@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ecbe4139-d1c6-4d02-ab8f-e5e21f9d3b2d" name="Changes" comment="beginning and switching assignments because I ran out of time for today">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ex1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ex1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +57,7 @@
       <recent name="C:\Users\USER\IdeaProjects\Ex1" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.Ex1Test">
+  <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Ex1" />
@@ -108,7 +106,7 @@
       <workItem from="1733305813923" duration="27000" />
       <workItem from="1733744122860" duration="4216000" />
       <workItem from="1733773343106" duration="42000" />
-      <workItem from="1733822938747" duration="6267000" />
+      <workItem from="1733822938747" duration="6431000" />
     </task>
     <task id="LOCAL‎-00001" summary="beginning and switching assignments because I ran out of time for today">
       <option name="closed" value="true" />

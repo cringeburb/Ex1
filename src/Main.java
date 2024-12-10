@@ -54,7 +54,7 @@ public class Main {
             ss[1] = input2;
             ss[2] = sum;
             ss[3] = mult;
-            System.out.println("Max Over" + Ex1.maxIndex(ss));
+            System.out.println("Max Over [" +input1+ "," +input2 + ","+ sum+ ","+mult +"] = " + Ex1.maxIndex(ss));
             System.out.println("Enter a string as number#1 (or \"quit\" to end the program)");
             input1 = sc.nextLine();
         }
