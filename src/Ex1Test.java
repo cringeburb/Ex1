@@ -32,7 +32,7 @@ public class Ex1Test {
 
     @Test
     public void Int2NumberTest() {
-        assertEquals("12b11", Ex1.int2Number(18, 11));
+        assertEquals("12b11", Ex1.int2Number(13, 11));
         assertEquals("1Bb16", Ex1.int2Number(27, 16));
         assertEquals("10b10", Ex1.int2Number(10, 10));
         assertEquals("1010b2", Ex1.int2Number(10, 2));
@@ -41,7 +41,7 @@ public class Ex1Test {
 
     @Test
     public void testNumber2Int() {
-        assertEquals(18, Ex1.number2Int("12b11"));
+        assertEquals(13, Ex1.number2Int("12b11"));
         assertEquals(27, Ex1.number2Int("1Bb16"));
         assertEquals(10, Ex1.number2Int("10"));
         assertEquals(-1, Ex1.number2Int("G12"));//invalid number
@@ -56,7 +56,6 @@ public class Ex1Test {
         assertTrue(Ex1.isNumber("10"));
         assertFalse(Ex1.isNumber("G12")); // Invalid number
         assertFalse(Ex1.isNumber("12b18")); // Invalid base
-        assertFalse(Ex1.isNumber("12bA")); // Invalid base character
     }
 
     @Test
@@ -64,7 +63,7 @@ public class Ex1Test {
         assertEquals(11, Ex1.BaseValue("12b11"));
         assertEquals(16, Ex1.BaseValue("1Bb16"));
         assertEquals(10, Ex1.BaseValue("10"));
-        assertEquals(0, Ex1.BaseValue("G12")); // Invalid number
+        assertEquals(-1, Ex1.BaseValue("G12")); // Invalid number
     }
 
     @Test
@@ -81,10 +80,10 @@ public class Ex1Test {
 
     @Test
     public void testMaxIndex() {
-        String[] values = {"12b11", "1Bb16", "10"};
+        String[] values = {"12b11", "1Bb16", "10" , "25"};
         assertEquals(27, Ex1.maxIndex(values));
-        String[] values2 = {"10b2", "5b2", "7b2"};
-        assertEquals(10, Ex1.maxIndex(values2));
+        String[] values2 = {"10b2", "5b10", "7" , "111b2"};
+        assertEquals(7, Ex1.maxIndex(values2));
     }
 
     @Test

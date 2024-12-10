@@ -16,7 +16,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         int base = 1;
-        String sum= "";
+        String sum = "";
         String mult = "";
         String input1 = "";
         String input2 = "";
@@ -26,7 +26,8 @@ public class Main {
         while (!input1.equals("quit") && !input2.equals("quit")) {
             if (Ex1.isNumber(input1)) {
                 System.out.println("num1 =" + input1 + "is valid , value: " + Ex1.number2Int(input1));
-            } if (!Ex1.isNumber(input1)) {
+            }
+            if (!Ex1.isNumber(input1)) {
                 System.out.println("num1 =" + input1 + "is not valid , value: -1");
                 System.out.println("ERR: num1 is in the wrong format" + "(" + input1 + ")");
                 break;
@@ -35,24 +36,25 @@ public class Main {
             input2 = sc.nextLine();
             if (Ex1.isNumber(input2)) {
                 System.out.println("num1 =" + input2 + "is valid , value: " + Ex1.number2Int(input2));
-            } if(!Ex1.isNumber(input2)) {
+            }
+            if (!Ex1.isNumber(input2)) {
                 System.out.println("num1 =" + input2 + "is not valid , value: -1");
                 System.out.println("ERR: num1 is in the wrong format" + "(" + input2 + ")");
                 break;
             }
             System.out.println("enter a base for output [2 , 16]");
-            base=sc.nextInt();
+            base = sc.nextInt();
             sc.nextLine(); //consumes next input after loop ends
-            sum = Ex1.int2Number((Ex1.number2Int(input1) + Ex1.number2Int(input2)),base);
+            sum = Ex1.int2Number((Ex1.number2Int(input1) + Ex1.number2Int(input2)), base);
             mult = Ex1.int2Number((Ex1.number2Int(input1) * Ex1.number2Int(input2)), base);
-            System.out.println(input1 + " + " + input2 + " = " + sum );
+            System.out.println(input1 + " + " + input2 + " = " + sum);
             System.out.println(input1 + " * " + input2 + " = " + mult);
-            String [] ss = new String[4];
-           ss[0] = input1;
-           ss[1] = input2;
-           ss[2] = sum;
-           ss[3] = mult;
-            System.out.println("Max Over"  + Ex1.maxIndex(ss) );
+            String[] ss = new String[4];
+            ss[0] = input1;
+            ss[1] = input2;
+            ss[2] = sum;
+            ss[3] = mult;
+            System.out.println("Max Over" + Ex1.maxIndex(ss));
             System.out.println("Enter a string as number#1 (or \"quit\" to end the program)");
             input1 = sc.nextLine();
         }

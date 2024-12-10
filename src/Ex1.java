@@ -5,6 +5,11 @@ public class Ex1 {
     public static int number2Int(String s) {
         if (!s.contains("b") && isNumber(s)) //checks if the number is already in its decimal value
             return Integer.parseInt(s);//returns the number if its already in base 10 such as: 1 , 2 , 100 etc.
+        if (s.contains("bA"))
+        {
+            return Integer.parseInt(s.split("b")[0]);
+        }
+
         int ans = 0;
         if (!isNumber(s))//validate the numbers format
             return -1;
@@ -18,7 +23,7 @@ public class Ex1 {
                 ans += (int) (CharValue(ch[i]) * Math.pow(baseval, ch.length - 1 - i));
             }
         }
-        return ans ; //return final converted value
+        return ans; //return final converted value
     }
 
     //changes an Integer to its representation with a given base
@@ -29,6 +34,7 @@ public class Ex1 {
         ArrayList<Character> c = new ArrayList<Character>();
         int bit = 0;
         String j = "";
+
         while (num != 0) {
             bit = num % base;
             num = num / base;
@@ -50,10 +56,19 @@ public class Ex1 {
         ans = sb.toString(); //converts string builder to a string
         return ans;
     }
-
     //checks if a given string is a valid number
     public static boolean isNumber(String input) {
         boolean ans = true;
+        int InB = input.indexOf('b');
+        if (input.contains("b") && input.length() > 2)
+            if (!input.substring(0, InB).toUpperCase().equals(input.substring(0, InB)))
+                ans = false;
+        if (input.contains(" "))
+            return false;
+        if(!input.trim().equals(input))
+            return false;
+        if (input.charAt(0) == 'b')
+            return false;
         if (!input.contains("b")) { //string might be a decimal number without a base representation
             for (int i = 0; i < input.length(); i++) {
                 if (input.charAt(i) >= 'a' && input.charAt(i) <= 'z' || input.charAt(i) >= 'A' && input.charAt(i) <= 'Z') { //if all characters are digits
@@ -74,7 +89,7 @@ public class Ex1 {
             return false;
         String val = num[0];
         parsebase = BaseValue(input);
-        if (parsebase <= 0)
+        if (parsebase < 2 || parsebase >16)
             return false;
         char[] c = val.toCharArray();
         for (char value : c) {
@@ -85,35 +100,42 @@ public class Ex1 {
         return ans;
 
     }
-
     //retrieves the value of a given number
     public static int BaseValue(String num) {
         if (!num.contains("b") && isNumber(num))
             return 10; //base 10 can be written without a base representation
         String[] parts = num.split("b");
-        String base = parts[1];
-        int p = 0;
-        char c;
-        if (base.length() == 1) {
-            c = base.charAt(0);
-            if (Character.isDigit(c))
-                return Integer.parseInt(base); //returns base value 1-9
+        if (parts.length>1)
+        {
+            String base = parts[1];
+            int p = 0;
+            char c;
+            if (base.length() == 1) {
+                c = base.charAt(0);
+                if (Character.isDigit(c))
+                    return Integer.parseInt(base); //returns base value 1-9
 
-            if (base.charAt(0) >= 'A' && base.charAt(0) <= 'Z') {
-                return CharValue(base.charAt(0)); //returns base value 10-16
-            }
-        } else {
-            char[] valarray = base.toCharArray();
-            for (char value : valarray) {
-                p += Character.getNumericValue(value);
-                p *= 10;
-            }
-            p /= 10;
+                if (base.charAt(0) >= 'A' && base.charAt(0) <= 'Z') {
+                    return CharValue(base.charAt(0)); //returns base value 10-16
+                }
+            } else {
+                char[] valarray = base.toCharArray();
+                for (char value : valarray) {
+                    p += Character.getNumericValue(value);
+                    p *= 10;
+                }
+                p /= 10;
 
+            }
+
+            return p;
         }
-        return p;
+        else
+        {
+            return -1;
+        }
     }
-
+    //retrieves the value of certain letters in the input string
     public static int CharValue(char ch) {
         if (ch == 'A')
             return 10;
@@ -131,7 +153,7 @@ public class Ex1 {
             return 16;
         return 0;
     }
-
+    //returns the maximum int value between given strings
     public static int maxIndex(String[] m) {
         int ans = Integer.MIN_VALUE;
         for (int i = 0; i < m.length; i++) {
@@ -140,18 +162,8 @@ public class Ex1 {
         }
         return ans;
     }
-
+    //checks if two numbers are equal
     public static boolean equals(String a, String b) {
-        boolean ans = true;
-        if (a.length() != b.length()) {
-            ans = false;
-            return ans;
-        }
-        for (int i = 0; i < a.length(); i++) {
-            if (a.charAt(i) != b.charAt(i))
-                ans = false;
-        }
-        return ans;
+        return number2Int(a) == number2Int(b);
     }
-
 }

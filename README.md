@@ -10,7 +10,7 @@ Functions:
 4.basevalue - Extract the base from a given number in its string representation.
 5.CharValue - returns the value of letters in the string accordingly (A=10 ... G=16)
 6.maxIndex - Determine the maximum value among a list of number strings.
-7.equals - checks if 2 strings are equal.
+7.equals - checks if 2 numbers are equal regardless to their representation.
 
 Testing
 The class Ex1Test provides JUNIT tests to ensure that the code is working accordingly.
