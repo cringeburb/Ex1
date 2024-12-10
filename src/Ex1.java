@@ -83,13 +83,13 @@ public class Ex1 {
         if (!input.contains("b") || input.indexOf('b') != input.lastIndexOf('b')) // checks number of times the letter 'b' appears in the input
             return false;
         String[] num = input.split("b");
-        if (num.length != 2)
+        if (num.length != 2) //there is more than 2 'b's in the string
             return false;
-        if (BaseValue(input) == 0)
+        if (BaseValue(input) == 0) //invalid base
             return false;
         String val = num[0];
         parsebase = BaseValue(input);
-        if (parsebase < 2 || parsebase >16)
+        if (parsebase < 2 || parsebase >16) //base out of range
             return false;
         char[] c = val.toCharArray();
         for (char value : c) {
@@ -119,7 +119,7 @@ public class Ex1 {
                     return CharValue(base.charAt(0)); //returns base value 10-16
                 }
             } else {
-                char[] valarray = base.toCharArray();
+                char[] valarray = base.toCharArray(); //in case of a base greater than 9 that's represented in numbers and not letters
                 for (char value : valarray) {
                     p += Character.getNumericValue(value);
                     p *= 10;
@@ -156,6 +156,7 @@ public class Ex1 {
     //returns the maximum int value between given strings
     public static int maxIndex(String[] m) {
         int ans = Integer.MIN_VALUE;
+        //runs through the array in search of the largest number while updating the max variable
         for (int i = 0; i < m.length; i++) {
             if (ans < number2Int(m[i]))
                 ans = number2Int(m[i]);
@@ -164,6 +165,6 @@ public class Ex1 {
     }
     //checks if two numbers are equal
     public static boolean equals(String a, String b) {
-        return number2Int(a) == number2Int(b);
+        return number2Int(a) == number2Int(b); //checks if their decimal value is the same
     }
 }
