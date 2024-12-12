@@ -25,20 +25,20 @@ public class Main {
         input1 = sc.nextLine();
         while (!input1.equals("quit") && !input2.equals("quit")) {
             if (Ex1.isNumber(input1)) {
-                System.out.println("num1 =" + input1 + "is valid , value: " + Ex1.number2Int(input1));
+                System.out.println("num1 = " + input1 + " is valid , value: " + Ex1.number2Int(input1));
             }
             if (!Ex1.isNumber(input1)) {
-                System.out.println("num1 =" + input1 + "is not valid , value: -1");
+                System.out.println("num1 =" + input1 + " is not valid , value: -1");
                 System.out.println("ERR: num1 is in the wrong format" + "(" + input1 + ")");
                 break;
             }
             System.out.println("Enter a string as number#2 (or \"quit\" to end the program)");
             input2 = sc.nextLine();
             if (Ex1.isNumber(input2)) {
-                System.out.println("num1 =" + input2 + "is valid , value: " + Ex1.number2Int(input2));
+                System.out.println("num2 = " + input2 + " is valid , value: " + Ex1.number2Int(input2));
             }
             if (!Ex1.isNumber(input2)) {
-                System.out.println("num1 =" + input2 + "is not valid , value: -1");
+                System.out.println("num2 =" + input2 + " is not valid , value: -1");
                 System.out.println("ERR: num1 is in the wrong format" + "(" + input2 + ")");
                 break;
             }
@@ -58,6 +58,7 @@ public class Main {
             System.out.println("Enter a string as number#1 (or \"quit\" to end the program)");
             input1 = sc.nextLine();
         }
+        System.out.println("quiting...");
     }
 
 

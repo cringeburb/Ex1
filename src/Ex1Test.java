@@ -81,9 +81,9 @@ public class Ex1Test {
     @Test
     public void testMaxIndex() {
         String[] values = {"12b11", "1Bb16", "10" , "25"};
-        assertEquals(27, Ex1.maxIndex(values));
+        assertEquals("1Bb16", Ex1.maxIndex(values));
         String[] values2 = {"10b2", "5b10", "7" , "111b2"};
-        assertEquals(7, Ex1.maxIndex(values2));
+        assertEquals("7", Ex1.maxIndex(values2));
     }
 
     @Test

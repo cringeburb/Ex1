@@ -154,14 +154,17 @@ public class Ex1 {
         return 0;
     }
     //returns the maximum int value between given strings
-    public static int maxIndex(String[] m) {
+    public static String maxIndex(String[] m) {
         int ans = Integer.MIN_VALUE;
+        String maxindex = "";
         //runs through the array in search of the largest number while updating the max variable
         for (int i = 0; i < m.length; i++) {
-            if (ans < number2Int(m[i]))
+            if (ans < number2Int(m[i])) {
                 ans = number2Int(m[i]);
+                maxindex = m[i];
+            }
         }
-        return ans;
+        return maxindex;
     }
     //checks if two numbers are equal
     public static boolean equals(String a, String b) {
