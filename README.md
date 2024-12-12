@@ -19,7 +19,12 @@ Example of console:
         Enter a string as number#1 (or "quit" to end the program)
     user-quit
     console-quiting...
+    
+The project is built with 3 main classes:
 
+Main-the main class where the input and output is initialized
+Ex1-the class where all the calculation and conversion function are initialized
+Ex1Test-the class with the JUNIT testing in order to check if the function in Ex1 work accordingly
 
 Functions:
 1.number2Int - a function that converts a number with a given base to its decimal value.
